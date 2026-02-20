@@ -1,0 +1,193 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root luxury colors */
+:root {
+  --gold: #d6b36a;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+/* Body */
+body {
+  background: radial-gradient(circle at top, #111118, #070709);
+  color: #eaeaea;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Canvas */
+#web {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Page Transition */
+#transition {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    #000,
+    var(--gold),
+    #000
+  );
+  z-index: 999;
+  transform: scaleY(1);
+  transform-origin: top;
+  animation: curtain 1.6s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+@keyframes curtain {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+/* Layout */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: auto;
+  padding: 90px 30px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 140px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 68px;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  margin-top: 18px;
+  color: #aaa;
+  font-weight: 300;
+}
+
+/* Section */
+section {
+  margin-bottom: 120px;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  display: block;
+  margin-top: 14px;
+}
+
+/* About */
+.about p {
+  max-width: 640px;
+  line-height: 1.9;
+  color: #cfcfcf;
+}
+
+/* Projects */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+/* Glass Cards */
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 34px;
+  border-radius: 18px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: all 0.6s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold light sweep */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(214, 179, 106, 0.15),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
+  border-color: rgba(214, 179, 106, 0.4);
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 12px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Entrance Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.8s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(60px);
+  animation: slideUp 1.8s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.slide-up:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.slide-up:nth-child(3) {
+  animation-delay: 0.45s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
